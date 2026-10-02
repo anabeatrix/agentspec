@@ -1,0 +1,8 @@
+# Role files kept by the analytics profile, as {category}/{name}, one per line.
+# The workflow/ phase agents are always kept.
+data-engineering/dbt-specialist
+data-engineering/sql-optimizer
+architect/schema-designer
+test/data-quality-analyst
+test/data-contracts-engineer
+python/code-reviewer

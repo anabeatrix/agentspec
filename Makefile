@@ -16,7 +16,7 @@
 SHELL := /usr/bin/env bash
 
 .DEFAULT_GOAL := help
-.PHONY: help build test check lint clean generate plugin install-deps spec-lint spec-judge spec-scorer
+.PHONY: help build test check lint clean generate plugin devin devin-analytics install-deps spec-lint spec-judge spec-scorer
 
 # ----------------------------------------------------------------------------
 # Help
@@ -48,6 +48,12 @@ generate: ## Regenerate agent-router artifacts (SKILL.md + routing.json)
 
 plugin: build ## Alias for `make build`
 
+devin: ## Build the Devin bundle into devin/ (SDD skills + roles + KB)
+	@./build-devin.sh
+
+devin-analytics: ## Build the lean analytics-engineering Devin bundle into devin/
+	@./build-devin.sh --profile analytics
+
 spec-lint: ## Run the spec-linter component test suite (tools/spec-linter)
 	@if [ -x tools/spec-linter/.venv/bin/python ]; then \
 		( cd tools/spec-linter && .venv/bin/python -m pytest -v ); \
@@ -78,6 +84,7 @@ lint: ## Lint shell scripts via shellcheck (skips gracefully if not installed)
 		echo "Running shellcheck..."; \
 		shellcheck -S warning \
 			build-plugin.sh \
+			build-devin.sh \
 			.claude/skills/visual-explainer/scripts/share.sh \
 			plugin-extras/scripts/init-workspace.sh; \
 	else \

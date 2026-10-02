@@ -1,0 +1,6 @@
+# KB domains kept by the analytics profile, one per line.
+# shared/ and _templates/ are always kept.
+dbt
+sql-patterns
+data-modeling
+data-quality

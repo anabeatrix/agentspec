@@ -109,12 +109,19 @@ agentspec/
 │   ├── hooks/               # hooks.json
 │   └── scripts/             # init-workspace.sh
 │
+├── devin-extras/            # Devin-only content (merged into devin/ by build-devin.sh)
+│   ├── AGENTS.md            # Always-on context shipped to the target repository
+│   ├── README.md            # Install instructions for the bundle
+│   ├── overlays/            # "Running under Devin" sections appended to the sdd-* skills
+│   └── profiles/            # Lean bundles (`--profile analytics`): KB/role lists + extra rules and overlays
+│
 ├── Makefile                 # Developer entry point — `make help` lists all targets
 ├── build-plugin.sh          # Builds plugin/ from .claude/ (invokes scripts/generate-agent-router.py)
+├── build-devin.sh           # Builds devin/ (gitignored) from .claude/ — SDD skills + roles + KB for Devin
 ├── scripts/                 # Build tooling (not shipped in plugin)
 │   ├── generate-agent-router.py  # Regenerates agent-router SKILL.md + routing.json from agent frontmatter
 │   └── judge.py             # Judge V0: OpenRouter second opinion (backend for /judge command)
-├── tests/                   # pytest suite (27 tests) — `make test`
+├── tests/                   # pytest suite (36 tests) — `make test`
 ├── .shellcheckrc            # Lint config for shell scripts
 ├── CHANGELOG.md             # Version history
 ├── CONTRIBUTING.md          # Contribution guide
