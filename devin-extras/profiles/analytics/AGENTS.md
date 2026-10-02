@@ -8,4 +8,4 @@ These rules apply to any work that creates or changes a data model: a dbt model,
 3. **Design states the model's shape.** The DESIGN gives, for each model, its grain, primary key, materialization, upstream sources, and tests.
 4. **Exemption.** A change that leaves grain, keys, joins, filters, and metric logic untouched (a description, formatting, a renamed alias with no downstream effect) may skip the phases. Say that you are using the exemption and why.
 
-This bundle carries only the analytics KB domains (`dbt`, `sql-patterns`, `data-modeling`, `data-quality`) and roles. When a skill names a KB domain or a role that is not under `.agentspec/`, skip it and continue with what is present.
+This bundle carries only the analytics KB domains (`dbt`, `sql-patterns`, `data-modeling`, `data-quality`, `cloud-platforms`) and roles. When a skill names a KB domain or a role that is not under `.agentspec/`, skip it and continue with what is present.

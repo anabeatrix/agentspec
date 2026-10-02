@@ -83,7 +83,7 @@ def analytics_bundle(tmp_path_factory: pytest.TempPathFactory) -> Path:
 def test_profile_keeps_only_listed_kb_and_roles(analytics_bundle: Path) -> None:
     kb = analytics_bundle / ".agentspec" / "kb"
     domains = {path.name for path in kb.iterdir() if path.is_dir()}
-    assert domains == {"dbt", "sql-patterns", "data-modeling", "data-quality", "shared", "_templates"}
+    assert domains == {"dbt", "sql-patterns", "data-modeling", "data-quality", "cloud-platforms", "shared", "_templates"}
 
     agents = analytics_bundle / ".agentspec" / "agents"
     assert (agents / "data-engineering" / "dbt-specialist.md").is_file()
@@ -96,7 +96,7 @@ def test_profile_filters_the_kb_index(analytics_bundle: Path) -> None:
     index = (analytics_bundle / ".agentspec" / "kb" / "_index.yaml").read_text(encoding="utf-8")
     registry = index.split("\ndomains:", 1)[1]
     listed = set(re.findall(r"^  ([a-z0-9-]+):\s*$", registry, flags=re.MULTILINE))
-    assert listed == {"dbt", "sql-patterns", "data-modeling", "data-quality"}
+    assert listed == {"dbt", "sql-patterns", "data-modeling", "data-quality", "cloud-platforms"}
 
 
 def test_profile_adds_its_rules_and_overlays(analytics_bundle: Path) -> None:

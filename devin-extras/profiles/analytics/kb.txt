@@ -4,3 +4,4 @@ dbt
 sql-patterns
 data-modeling
 data-quality
+cloud-platforms
